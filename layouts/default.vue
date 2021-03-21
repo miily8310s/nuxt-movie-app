@@ -4,7 +4,7 @@
       <img src="~/assets/logo.svg" alt="nuxtjs's logo" />
       <h1>Movie App</h1>
       <div class="header-navs">
-        <span v-for="list in lists" :key="list">{{ list }}</span>
+        <span v-for="list in lists" :key="list" class="btn">{{ list }}</span>
       </div>
     </header>
     <Nuxt />
@@ -44,5 +44,14 @@ header span {
 
 .header-navs {
   margin-top: 1.1rem;
+}
+.btn {
+  padding: 0.5rem;
+  background-color: black;
+  border-radius: 5%;
+}
+.btn:hover {
+  background-color: pink;
+  cursor: pointer;
 }
 </style>
