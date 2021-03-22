@@ -4,7 +4,9 @@
       <img src="~/assets/logo.svg" alt="nuxtjs's logo" />
       <h1>Movie App</h1>
       <div class="header-navs">
-        <span v-for="list in lists" :key="list" class="btn">{{ list }}</span>
+        <span class="btn" @click="goToIndex">Trends</span>
+        <span class="btn" @click="goToNetflix">Netflix Series</span>
+        <span class="btn" @click="goToNetflix">TV Series</span>
       </div>
     </header>
     <Nuxt />
@@ -17,6 +19,14 @@ export default Vue.extend({
   computed: {
     lists: () => {
       return ['Trends', 'Netflix Series', 'Movies', 'TV Series']
+    },
+  },
+  methods: {
+    goToIndex() {
+      this.$router.push('/')
+    },
+    goToNetflix() {
+      this.$router.push('/netflix')
     },
   },
 })
