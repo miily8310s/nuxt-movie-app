@@ -28,16 +28,16 @@ describe('TrendList', () => {
             media_type: 'movie',
             poster_path: 'hoge.png',
           },
+          {
+            index: 2,
+            name: 'mr blood',
+            media_type: 'tv',
+            poster_path: 'fuga.png',
+          },
         ],
       },
     })
-    expect(wrapper.html()).toBe(
-      `<div class="trendlist">
-        <div>
-          <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2/hoge.png" alt="1">
-          <p>alaska</p>
-        </div>
-      </div>`
-    )
+    expect(wrapper.findAll('p').at(0).html()).toBe(`<p>alaska</p>`)
+    expect(wrapper.findAll('p').at(1).html()).toBe(`<p>mr blood</p>`)
   })
 })
