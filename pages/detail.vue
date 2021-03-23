@@ -1,45 +1,33 @@
 <template>
-  <div>
-    <!-- <h1>Trend All</h1>
-    <TrendList :trends="trendAll" />
-    <h1>Trend Movies</h1>
-    <TrendList :trends="trendMovies" />
-    <h1>Trend Series</h1>
-    <TrendList :trends="trendSeries" /> -->
-  </div>
+  <MovieDetail :movie="movie" />
 </template>
 
 <script>
 import Vue from 'vue'
-// import {
-//   TRENDS_ALL_URL,
-//   TRENDS_MOVIES_URL,
-//   TRENDS_SERIES_URL,
-// } from '@/api/index'
+import { MOVIE_URL, SERIES_URL, API_URL } from '@/api/index'
 
-// import TrendList from '~/components/TrendList.vue'
+import MovieDetail from '~/components/MovieDetail.vue'
 
 export default Vue.extend({
-  // components: {
-  //   TrendList,
-  // },
+  components: {
+    MovieDetail,
+  },
   data() {
     return {
-      movie: {},
+      movie: [],
       id: this.$route.query.id,
       media: this.$route.query.media,
     }
   },
   async fetch() {
-    //   this.trendAll = await fetch(TRENDS_ALL_URL)
-    //     .then((response) => response.json())
-    //     .then((result) => result.results)
-    //   this.trendMovies = await fetch(TRENDS_MOVIES_URL)
-    //     .then((response) => response.json())
-    //     .then((result) => result.results)
-    //   this.trendSeries = await fetch(TRENDS_SERIES_URL)
-    //     .then((response) => response.json())
-    //     .then((result) => result.results)
+    this.movie = await fetch(this.movie_url).then((response) => response.json())
+  },
+  computed: {
+    movie_url() {
+      const apiKey = API_URL + this.$config.apiSecret
+      const detailUrl = this.media === 'movie' ? MOVIE_URL : SERIES_URL
+      return `${this.$config.baseURL}${detailUrl}${this.id}${apiKey}`
+    },
   },
 })
 </script>

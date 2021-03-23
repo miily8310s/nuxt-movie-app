@@ -3,5 +3,4 @@ export interface Movie {
   name?: string
   title?: string
   poster_path: string
-  media_type: string
 }
