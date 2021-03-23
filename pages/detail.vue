@@ -1,5 +1,8 @@
 <template>
-  <MovieDetail :movie="movie" />
+  <div>
+    <Navbar />
+    <MovieDetail :movie="movie" />
+  </div>
 </template>
 
 <script>
@@ -7,10 +10,12 @@ import Vue from 'vue'
 import { MOVIE_URL, SERIES_URL, API_URL } from '@/api/index'
 
 import MovieDetail from '~/components/MovieDetail.vue'
+import Navbar from '~/components/Navbar.vue'
 
 export default Vue.extend({
   components: {
     MovieDetail,
+    Navbar,
   },
   data() {
     return {
