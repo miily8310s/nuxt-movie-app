@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div v-if="loading">
+    <Loading />
+  </div>
+  <div v-else>
     <Navbar />
     <MovieDetail :movie="movie" />
   </div>
@@ -11,21 +14,25 @@ import { MOVIE_URL, SERIES_URL, API_URL } from '@/api/index'
 
 import MovieDetail from '~/components/MovieDetail.vue'
 import Navbar from '~/components/Navbar.vue'
+import Loading from '~/components/Loading.vue'
 
 export default Vue.extend({
   components: {
     MovieDetail,
     Navbar,
+    Loading,
   },
   data() {
     return {
       movie: [],
       id: this.$route.query.id,
       media: this.$route.query.media,
+      loading: true,
     }
   },
   async fetch() {
     this.movie = await fetch(this.movie_url).then((response) => response.json())
+    this.loading = false
   },
   computed: {
     movie_url() {
