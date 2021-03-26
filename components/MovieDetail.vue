@@ -1,53 +1,93 @@
 <template>
-  <div class="movieDetail">
-    <div class="movieDetail_image">
-      <img
-        :src="
-          'https://themoviedb.org/t/p/w600_and_h900_bestv2/' + movie.poster_path
-        "
-      />
-      <div class="movieDetail_image_number">
-        <span>people</span>
-        <span>vote</span>
+  <div>
+    <div class="movieDetail">
+      <div class="movieDetail_image">
+        <img
+          :src="
+            'https://themoviedb.org/t/p/w600_and_h900_bestv2/' +
+            movie.poster_path
+          "
+        />
+        <div class="movieDetail_image_number">
+          <span>people</span>
+          <span>vote</span>
+        </div>
+        <div class="movieDetail_image_number">
+          <span>{{ movie.vote_count }}</span>
+          <span>{{ movie.vote_average }}</span>
+        </div>
       </div>
-      <div class="movieDetail_image_number">
-        <span>{{ movie.vote_count }}</span>
-        <span>{{ movie.vote_average }}</span>
+      <div class="movieDetail_data">
+        <p>{{ movie.title || movie.name }}</p>
+        <div class="movieDetail_data_genres">
+          <p v-for="(genre, index) in movie.genres" :key="index">
+            {{ genre.name }}
+          </p>
+          <p>
+            {{ movie.runtime ? movie.runtime : movie.episode_run_time[0] }} min.
+          </p>
+        </div>
+        <p class="movieDetail_data_overview">{{ movie.overview }}</p>
+        <div>
+          <button @click="openHomePage(movie.homepage)">HomePage</button>
+          <button @click="openTMDb()">TMDB</button>
+        </div>
       </div>
     </div>
-    <div class="movieDetail_data">
-      <p>{{ movie.title || movie.name }}</p>
-      <div class="movieDetail_data_genres">
-        <p v-for="(genre, index) in movie.genres" :key="index">
-          {{ genre.name }}
-        </p>
-        <p>{{ movie.runtime }} min.</p>
-      </div>
-      <p class="movieDetail_data_overview">{{ movie.overview }}</p>
-      <!-- <div>
-        <a :href="{{" movie.homepage "}}">dddd</a>
-      </div> -->
+    <div class="movieDetail_recommend">
+      <TrendList
+        v-if="this.$route.query.media === 'movie'"
+        :trends="recommendMovie"
+      />
+      <TrendList v-else :trends="recommendSeries" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Movie } from '@/types/index'
+// import { Movie } from '@/types/index'
+import TrendList from '@/components/TrendList.vue'
+import { MOVIE_URL, SERIES_URL, API_URL } from '@/api/index'
 
 export default Vue.extend({
   name: 'MovieDetail',
+  components: {
+    TrendList,
+  },
   props: {
     movie: {
-      type: Object as PropType<Movie>,
+      type: Object,
       required: true,
     },
   },
-  // methods: {
-  //   openDetail(id: string, media: string): void {
-  //     this.$router.push(`detail?id=${id}&media=${media}`)
-  //   },
-  // },
+  data() {
+    return { recommendMovie: [], recommendSeries: [] }
+  },
+  async fetch() {
+    this.recommendMovie = await fetch(
+      `${this.$config.baseURL}${MOVIE_URL}${this.$route.query.id}/recommendations${API_URL}${this.$config.apiSecret}`
+    )
+      .then((response) => response.json())
+      .then((result) => result.results)
+    this.recommendSeries = await fetch(
+      `${this.$config.baseURL}${SERIES_URL}${this.$route.query.id}/recommendations${API_URL}${this.$config.apiSecret}`
+    )
+      .then((response) => response.json())
+      .then((result) => result.results)
+  },
+  methods: {
+    openHomePage(link: string): void {
+      open(link, '_blank')
+    },
+    openTMDb(): void {
+      const id = this.movie.id
+      if (this.$route.query.media === 'movie') {
+        open(`https://www.themoviedb.org/movie/${id}`, '_blank')
+      }
+      open(`https://www.themoviedb.org/tv/${id}`, '_blank')
+    },
+  },
 })
 </script>
 
@@ -57,6 +97,11 @@ img {
 }
 p {
   font-size: 1.8rem;
+}
+button {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 .movieDetail {
   display: flex;
@@ -87,5 +132,9 @@ p {
 }
 .movieDetail_data_overview {
   font-size: 1.5rem;
+}
+.movieDetail_recommend {
+  display: flex;
+  flex-direction: column;
 }
 </style>
