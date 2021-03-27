@@ -35,25 +35,25 @@
       </div>
     </div>
     <div class="movieDetail_recommend">
-      <TrendList
+      <RecommendList
         v-if="this.$route.query.media === 'movie'"
-        :trends="recommendMovie"
+        :recommends="recommendMovie"
+        :mediaType="`movie`"
       />
-      <TrendList v-else :trends="recommendSeries" />
+      <RecommendList v-else :recommends="recommendSeries" :mediaType="`tv`" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
-// import { Movie } from '@/types/index'
-import TrendList from '@/components/TrendList.vue'
+import Vue from 'vue'
+import RecommendList from '@/components/RecommendList.vue'
 import { MOVIE_URL, SERIES_URL, API_URL } from '@/api/index'
 
 export default Vue.extend({
   name: 'MovieDetail',
   components: {
-    TrendList,
+    RecommendList,
   },
   props: {
     movie: {

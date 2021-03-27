@@ -6,7 +6,6 @@
       <div class="header-navs">
         <span class="btn" @click="goToIndex">Trends</span>
         <span class="btn" @click="goToNetflix">Netflix Series</span>
-        <span class="btn" @click="goToNetflix">TV Series</span>
       </div>
     </header>
   </div>
