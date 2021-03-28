@@ -1,5 +1,7 @@
 # nuxt-movie-app
 
+https://xenodochial-bohr-f31e51.netlify.app/
+
 ## Build Setup
 
 ```bash

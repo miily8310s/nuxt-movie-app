@@ -44,4 +44,5 @@ export default {
       Roboto: true,
     },
   },
+  target: 'static',
 }
