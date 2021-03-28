@@ -37,8 +37,8 @@ export default Vue.extend({
   },
   methods: {
     openDetail(id: string, media: string): void {
-      this.$router.push(`detail?id=${id}&media=${media}`)
-      window.open(location.href)
+      this.$router.push(`detail-r?id=${id}&media=${media}`)
+      this.$router.go(1)
     },
   },
 })
