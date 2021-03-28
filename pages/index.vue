@@ -4,12 +4,14 @@
   </div>
   <div v-else>
     <Navbar />
-    <h1>Trend All</h1>
-    <TrendList :trends="trendAll" />
-    <h1>Trend Movies</h1>
-    <TrendList :trends="trendMovies" />
-    <h1>Trend Series</h1>
-    <TrendList :trends="trendSeries" />
+    <div>
+      <h1>Trend All</h1>
+      <TrendList :trends="trendAll" />
+      <h1>Trend Movies</h1>
+      <TrendList :trends="trendMovies" />
+      <h1>Trend Series</h1>
+      <TrendList :trends="trendSeries" />
+    </div>
   </div>
 </template>
 
@@ -59,3 +61,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+h1 {
+  font-size: 28px;
+}
+</style>

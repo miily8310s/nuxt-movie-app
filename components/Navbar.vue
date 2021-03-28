@@ -1,7 +1,6 @@
 <template>
   <div>
     <header>
-      <img src="~/assets/logo.svg" alt="nuxtjs's logo" />
       <h1>Movie App</h1>
       <div class="header-navs">
         <span class="btn" @click="goToIndex">Trends</span>
@@ -29,8 +28,7 @@ export default Vue.extend({
 <style scoped>
 * {
   margin: 0.5rem 0.5rem;
-  background-color: purple;
-  color: #fff;
+  color: #333;
 }
 
 h1,
@@ -40,6 +38,8 @@ img {
 
 header {
   display: flex;
+  margin-left: 0;
+  width: 2000px;
 }
 
 header span {
@@ -51,8 +51,6 @@ header span {
 }
 .btn {
   padding: 0.5rem;
-  background-color: black;
-  border-radius: 5%;
 }
 .btn:hover {
   background-color: pink;

@@ -44,7 +44,6 @@ export default Vue.extend({
 .trendlist {
   display: flex;
   max-width: 1980px;
-  white-space: nowrap;
   overflow-x: scroll;
   cursor: pointer;
 }

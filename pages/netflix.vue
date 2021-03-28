@@ -45,3 +45,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+h1 {
+  font-size: 28px;
+}
+</style>

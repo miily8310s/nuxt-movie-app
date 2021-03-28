@@ -7,8 +7,8 @@
 <style>
 * {
   margin: 0.5rem 0.5rem;
-  background-color: purple;
-  color: #fff;
+  color: #333;
+  font-family: 'Roboto Mono', monospace;
 }
 
 h1,
@@ -29,11 +29,10 @@ header span {
 }
 .btn {
   padding: 0.5rem;
-  background-color: black;
-  border-radius: 5%;
 }
 .btn:hover {
   background-color: pink;
+  color: #fff;
   cursor: pointer;
 }
 </style>

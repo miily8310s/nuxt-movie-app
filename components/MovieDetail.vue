@@ -115,6 +115,7 @@ button {
   display: flex;
   justify-content: space-around;
   font-size: 1.5rem;
+  margin: 0;
 }
 .movieDetail_data {
   display: flex;
@@ -127,6 +128,7 @@ button {
 .movieDetail_data_genres p {
   font-size: 1.5rem;
   background-color: darkslateblue;
+  color: #fff;
   padding: 0.5rem;
   border-radius: 3%;
 }

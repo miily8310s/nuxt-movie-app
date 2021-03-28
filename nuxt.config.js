@@ -29,7 +29,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/google-fonts'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
@@ -37,5 +37,11 @@ export default {
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL,
     apiSecret: process.env.API_KEY,
+  },
+  googleFonts: {
+    families: {
+      'Roboto+Mono': true,
+      Roboto: true,
+    },
   },
 }
