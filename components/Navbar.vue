@@ -39,7 +39,7 @@ img {
 header {
   display: flex;
   margin-left: 0;
-  width: 2000px;
+  width: 1600px;
 }
 
 header span {
