@@ -34,27 +34,15 @@
         </div>
       </div>
     </div>
-    <div class="movieDetail_recommend">
-      <RecommendList
-        v-if="this.$route.query.media === 'movie'"
-        :recommends="recommendMovie"
-        :mediaType="`movie`"
-      />
-      <RecommendList v-else :recommends="recommendSeries" :mediaType="`tv`" />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import RecommendList from '@/components/RecommendList.vue'
 import { MOVIE_URL, SERIES_URL, API_URL } from '@/api/index'
 
 export default Vue.extend({
   name: 'MovieDetail',
-  components: {
-    RecommendList,
-  },
   props: {
     movie: {
       type: Object,
