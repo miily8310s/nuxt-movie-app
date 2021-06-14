@@ -6,14 +6,15 @@
 
 <style>
 * {
-  margin: 0.5rem 0.5rem;
+  /* margin: 0.5rem 0.5rem; */
   color: #333;
   font-family: 'Roboto Mono', monospace;
 }
 
 h1,
 img {
-  margin-top: 0.3rem;
+  /* margin-top: 0.3rem; */
+  margin: 0.5rem 0.5rem;
 }
 
 header {

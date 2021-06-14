@@ -14,7 +14,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/css/global.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -42,6 +42,7 @@ export default {
     families: {
       'Roboto+Mono': true,
       Roboto: true,
+      Poppins: true,
     },
   },
   target: 'static',

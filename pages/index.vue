@@ -4,7 +4,7 @@
   </div>
   <div v-else>
     <Navbar />
-    <div>
+    <div class="trends">
       <h1>Trend All</h1>
       <TrendList :trends="trendAll" />
       <h1>Trend Movies</h1>
@@ -63,7 +63,14 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.trends {
+  background-color: #ffd3b4;
+}
 h1 {
   font-size: 28px;
+}
+h1:first-child {
+  margin-top: 0;
+  padding-top: 0.3rem;
 }
 </style>

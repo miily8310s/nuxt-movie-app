@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <header>
-      <h1>Movie App</h1>
-      <div class="header-navs">
-        <span class="btn" @click="goToIndex">Trends</span>
-        <span class="btn" @click="goToNetflix">Netflix Series</span>
-      </div>
-    </header>
-  </div>
+  <header>
+    <h1 @click="goToIndex">MovieApp</h1>
+    <div class="header-navs">
+      <span class="btn" @click="goToIndex">Trends</span>
+      <span class="btn" @click="goToNetflix">Netflix Series</span>
+    </div>
+  </header>
 </template>
 
 <script lang="ts">
@@ -27,8 +25,8 @@ export default Vue.extend({
 
 <style scoped>
 * {
-  margin: 0.5rem 0.5rem;
   color: #333;
+  font-family: 'Poppins', sans-serif;
 }
 
 h1,
@@ -36,10 +34,15 @@ img {
   margin-top: 0.3rem;
 }
 
+h1 {
+  margin: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
 header {
   display: flex;
   margin-left: 0;
-  width: 1600px;
+  background-color: #98ddca;
 }
 
 header span {
@@ -53,7 +56,7 @@ header span {
   padding: 0.5rem;
 }
 .btn:hover {
-  background-color: pink;
+  background-color: #d5ecc2;
   cursor: pointer;
 }
 </style>

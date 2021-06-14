@@ -93,7 +93,7 @@ button {
 }
 .movieDetail {
   display: flex;
-  max-width: 1980px;
+  margin: 0.5rem 0.3rem;
 }
 .movieDetail_image {
   display: flex;
@@ -119,6 +119,9 @@ button {
   color: #fff;
   padding: 0.5rem;
   border-radius: 3%;
+}
+.movieDetail_data_genres > * {
+  margin-right: 1rem;
 }
 .movieDetail_data_overview {
   font-size: 1.5rem;
